@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}<title> index </title>{% endblock %}
+
+{% block content %}
+<style>
+    h2 { color: #ff69b4; text-align: center; font-size: 2em; }
+    p { text-align: center; font-size: 18px; }
+</style>
+<h2>ยินดีต้อนรับสู่โลกแมว! 🐱</h2>
+<p>นี่คือหน้าแรกของเว็บไซต์แมว</p>
+<p>มาค้นพบความน่ารักของแมวกันเถอะ! 😺</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">รหัสประชากร</th>
+            <th scope="col">ชื่อประชากร</th>
+            <th scope="col">อายุ</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for person in all_person %}
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

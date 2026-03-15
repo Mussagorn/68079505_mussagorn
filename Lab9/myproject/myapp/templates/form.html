@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}แบบฟอร์ม{% endblock %}
+
+{% block content %}
+<style>
+    h2 { color: #ff69b4; text-align: center; font-size: 2em; }
+    form { max-width: 400px; margin: 0 auto; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input { width: 100%; padding: 8px; margin-top: 5px; border-radius: 10px; border: 1px solid #ffb6c1; }
+    button { margin-top: 15px; padding: 10px 20px; background: #ff69b4; color: white; border: none; cursor: pointer; border-radius: 10px; }
+</style>
+<h2>ลงทะเบียนคลับแมว 📝</h2>
+<form>
+    <label>ชื่อของคุณ 🐱:</label>
+    <input type="text" name="name" placeholder="ใส่ชื่อ">
+    <label>อีเมล 📧:</label>
+    <input type="email" name="email" placeholder="ใส่อีเมล">
+    <button type="submit">เข้าร่วมเลย! 🎉</button>
+</form>
+{% endblock %}
