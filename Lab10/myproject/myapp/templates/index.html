@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}<title> index </title>{% endblock %}
+
+{% block content %}
+<style>
+    h2 { color: #ff69b4; text-align: center; font-size: 2em; margin: 20px 0; }
+    p { text-align: center; font-size: 18px; margin: 15px 0; }
+    .table { margin: 30px auto; width: fit-content; }
+    table { border-collapse: collapse; }
+    th, td { padding: 15px 20px; text-align: center; }
+</style>
+<h2>ยินดีต้อนรับสู่โลกแมว! 🐱</h2>
+<p>นี่คือหน้าแรกของเว็บไซต์แมว</p>
+<p>มาค้นพบความน่ารักของแมวกันเถอะ! 😺</p>
+<table class="table table-hover">
+        <tr>
+            <th scope="col">รหัสประชากร</th>
+            <th scope="col">ชื่อประชากร</th>
+            <th scope="col">อายุ</th>
+            <th scope="col">แก้ไข</th>
+            <th scope="col">ลบ</th>
+        </tr>
+
+        {% for person in allPerson %}
+        <tr>
+            <td>{{ person.id }}</td>
+            <td>{{ person.name}}</td>
+            <td>{{ person.age }}</td>
+            <td><a href="#" class="btn btn-sm fw-bold rounded-pill" style="background-color: #ff69b4; color: white; border: none; padding: 8px 15px;"><i class="bi bi-pencil-square me-1"></i>แก้ไข</a></td>
+            <td><a href="#" class="btn btn-sm fw-bold rounded-pill" style="background-color: #ff8c00; color: white; border: none; padding: 8px 15px;"><i class="bi bi-trash me-1"></i>ลบ</a></td>
+        </tr>
+        {% endfor %}
+</table>
+{% endblock %}
