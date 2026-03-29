@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}แบบฟอร์ม{% endblock %}
+
+{% block content %}
+<style>
+    h2 { color: #ff69b4; text-align: center; font-size: 2em; }
+    form { max-width: 400px; margin: 0 auto; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input { width: 100%; padding: 8px; margin-top: 5px; border-radius: 10px; border: 1px solid #ffb6c1; }
+    button { margin-top: 15px; padding: 10px 20px; background: #ff69b4; color: white; border: none; cursor: pointer; border-radius: 10px; }
+</style>
+<h2>ลงทะเบียนคลับแมว 📝</h2>
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-5">
+            
+            <form id="registrationForm" method="post" action="/form/">
+              {% csrf_token %}
+              <div class="mb-4">
+                <label for="name" class="form-label fw-semibold">
+                  <i class="bi bi-person-fill text-primary me-2"></i>ชื่อ-นามสกุล
+                </label>
+                <input type="text" class="form-control form-control-lg bg-light border-0" id="name" name="name" placeholder="กรอกชื่อ-นามสกุล" required="">
+              </div>
+
+              <div class="mb-4">
+                <label for="age" class="form-label fw-semibold">
+                  <i class="bi bi-calendar-fill text-primary me-2"></i>อายุ
+                </label>
+                <input type="number" class="form-control form-control-lg bg-light border-0" id="age" name="age" placeholder="กรอกอายุ" min="1" max="150" required="">
+              </div>
+
+              <div class="d-grid gap-3 mt-4 mb-4" style="text-align: center;">
+                <button type="submit" class="btn btn-lg fw-bold rounded-pill shadow-sm" style="background-color: #ff69b4; color: white; border: none; margin: 5px auto; width: auto; padding: 12px 30px;">
+                  <i class="bi bi-check-circle-fill me-2"></i>ลงทะเบียน
+                </button>
+                <button type="reset" class="btn btn-lg fw-bold rounded-pill" style="background-color: #ff8c00; color: white; border: none; margin: 5px auto; width: auto; padding: 12px 30px;">
+                  <i class="bi bi-x-circle-fill me-2"></i>ล้างข้อมูล
+                </button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
