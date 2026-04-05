@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}ลงทะเบียน{% endblock %}
+
+{% block content %}
+<style>
+  h2 { color: #ff69b4; text-align: center; font-size: 2em; margin-bottom: 30px; }
+  form { max-width: 450px; margin: 0 auto; }
+  .form-group { margin-bottom: 20px; }
+  label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
+  input { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ffb6c1; font-family: 'Comic Sans MS', cursive; box-sizing: border-box; }
+  input:focus { outline: none; border-color: #ff69b4; box-shadow: 0 0 8px rgba(255, 105, 180, 0.3); }
+  .button-group { display: flex; gap: 12px; justify-content: center; margin-top: 25px; }
+  button { padding: 12px 30px; color: white; border: none; cursor: pointer; border-radius: 10px; font-weight: bold; font-family: 'Comic Sans MS', cursive; font-size: 1em; transition: transform 0.2s; }
+  button:hover { transform: scale(1.05); }
+  .btn-submit { background: #ff69b4; }
+  .btn-reset { background: #ff8c00; }
+</style>
+
+<h2>
+  {% if person %}
+    💌 แก้ไขข้อมูล
+  {% else %}
+    📝 ลงทะเบียนคลับแมว 🐱
+  {% endif %}
+</h2>
+
+<form id="registrationForm"
+      method="post"
+      action="{% if person %}/form/{{ person.id }}/{% else %}/form/{% endif %}">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="name">👤 ชื่อ-นามสกุล</label>
+    <input type="text"
+           id="name"
+           name="name"
+           placeholder="กรอกชื่อ-นามสกุล"
+           value="{% if person %}{{ person.name }}{% endif %}"
+           required>
+  </div>
+
+  <div class="form-group">
+    <label for="age">🎂 อายุ</label>
+    <input type="number"
+           id="age"
+           name="age"
+           placeholder="กรอกอายุ"
+           value="{% if person %}{{ person.age }}{% endif %}"
+           min="1"
+           max="150"
+           required>
+  </div>
+
+  <div class="button-group">
+    <button type="submit" class="btn-submit">
+      {% if person %}
+        ✏️ บันทึก
+      {% else %}
+        ✅ ลงทะเบียน
+      {% endif %}
+    </button>
+    <button type="reset" class="btn-reset">🔄 ล้างข้อมูล</button>
+  </div>
+</form>
+                    
+
+{% endblock content %}
